@@ -1,6 +1,25 @@
-(ns web-clojure.core)
+(ns web-clojure.core
+  (:use compojure.core)
+  (:require [compojure.handler :as handler]
+            [compojure.route :as route]
+            [ring.middleware.basic-authentication :refer :all]
+            [web-clojure.model.user :as user]
+            [web-clojure.controller.controller :as controller]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defroutes public-routes
+           (GET "/" [] (controller/index))
+           (route/resources "/")
+           (GET "/index" [] (controller/index))
+           (route/resources "/")
+           (GET "/homepage" [] (controller/home))
+           (route/resources "/"))
+
+
+
+
+(defroutes app-routes
+           public-routes
+           (route/not-found "404 Not Found"))
+
+(def -main
+  (handler/site app-routes))
