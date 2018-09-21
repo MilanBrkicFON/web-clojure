@@ -5,9 +5,9 @@
 
 (def mysql-db {
                :subprotocol "mysql"
-               :subname "//localhost:3306/clojure_dbs"
+               :subname "//localhost:3306/pssunce"
                :user "root"
-               :password "root"
+               :password ""
                :zeroDateTimeBehaviour "convertToNull"
                })
 

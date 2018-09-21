@@ -1,7 +1,8 @@
 (ns web-clojure.controller.controller
   (:require
     [clostache.parser :as clostache]
-    [web-clojure.model.user :as user]))
+    [web-clojure.model.user :as user]
+    [web-clojure.model.member :as member]))
 
 (defn read-template [template-name]
   (slurp (clojure.java.io/resource
@@ -15,3 +16,7 @@
 
 (defn index []
   (render-template "index" {}))
+
+(defn allMembers []
+      (render-template "allMembers" {:members (member/getAllMembers)
+                                     :trainers (member/getAllTrainers)}))

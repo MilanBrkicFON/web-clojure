@@ -1,113 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Clojure webapp</title>
+  <title>Clojure webapp</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="css/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="css/green.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="css/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="css/green.css" rel="stylesheet">
 
-    <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+  <!-- bootstrap-progressbar -->
+  <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+  <!-- JQVMap -->
+  <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+  <!-- bootstrap-daterangepicker -->
+  <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/stylefon.css">
+  <!-- Custom Theme Style -->
+  <link href="css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylefon.css">
 </head>
 
 <body class="nav-md">
 <div class="container body">
-    <div class="main_container">
-        <div class="col-md-3 left_col">
-            <div class="left_col scroll-view">
-                <div class="navbar nav_title" style="border: 0;">
-                    <a href="/homepage" class="site_title"><span>Homepage</span></a>
-                </div>
-
-
-                <br/>
-
-                <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                    <div class="menu_section">
-                        <h3>General</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-bank"></i> Banks <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="/allBanks">All banks</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-edit"></i> Interests <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="/allInterests">All interests</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="menu_section">
-                        <h3>Github</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="https://github.com/LordSaruman">Github profile</a></li>
-                                    <li><a href="https://github.com/LordSaruman/clojure-webapp">Project page</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /sidebar menu -->
-            </div>
+  <div class="main_container">
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+          <a href="/homepage" class="site_title"><span>Homepage</span></a>
         </div>
 
-        <!--&lt;!&ndash; top navigation &ndash;&gt;-->
-        <!--<div class="top_nav">-->
-        <!--<div class="nav_menu">-->
-        <!--<nav>-->
-        <!--<div class="nav toggle">-->
-        <!--<a id="menu_toggle"><i class=""></i></a>-->
-        <!--</div>-->
-        <!--</nav>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; /top navigation &ndash;&gt;-->
 
-        <!-- page content -->
+        <br/>
 
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
+            <h3>General</h3>
+            <ul class="nav side-menu">
+              <li><a><i class="fa fa-bank"></i> Cities <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="/allBanks">All cities</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-edit"></i> Members <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="/members">All members</a></li>
+                  <li><a href="insert-member">Insert a new member</a></li>
+                  <li><a href="remove-member">Remove the member</a></li>
+                  <li><a href="update-member">Update the member</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
 
-        <div class="right_col" role="main">
-            <!-- top tiles -->
-            <div class="container-login100" style="background-image: url('images/fon1.png');">
-            </div>
-            <!-- /top tiles -->
+          <div class="menu_section">
+            <h3>Github</h3>
+            <ul class="nav side-menu">
+              <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="https://github.com/MilanBrkicFON">Github profile</a></li>
+                  <li><a href="https://github.com/MilanBrkicFON/web-clojure">Project page</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-
-        <!-- footer content -->
-        <footer>
-            <div class="pull-right">
-                Filip Ivanovic <a href="https://github.com/LordSaruman">Github profile</a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+        <!-- /sidebar menu -->
+      </div>
     </div>
+
+    <!--&lt;!&ndash; top navigation &ndash;&gt;-->
+    <!--<div class="top_nav">-->
+    <!--<div class="nav_menu">-->
+    <!--<nav>-->
+    <!--<div class="nav toggle">-->
+    <!--<a id="menu_toggle"><i class=""></i></a>-->
+    <!--</div>-->
+    <!--</nav>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /top navigation &ndash;&gt;-->
+
+    <!-- page content -->
+
+
+    <div class="right_col" role="main">
+      <!-- top tiles -->
+      <div class="container-login100" style="background-image: url('images/fon1.png');">
+      </div>
+      <!-- /top tiles -->
+    </div>
+
+    <!-- footer content -->
+    <footer>
+      <div class="pull-right">
+        Milan Brkic <a href="https://github.com/MilanBrkicFON">Github profile</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+  </div>
 </div>
 
 <!-- jQuery -->

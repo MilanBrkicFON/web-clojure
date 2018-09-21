@@ -1,39 +1,35 @@
-function addNewBank(){
+function addNewMember(){
     $.confirm({
-        title: 'Add new bank',
-        content: '<form action="/domain/banks/insert" method="post">' +
+        title: 'Add new member',
+        content: '<form action="/model/member/insert" method="post">' +
         '<div class="form-group">'+
         '<label>Identification number:</label>'+
         ' <input type="number" class="form-control" name="identification_number" placeholder="Identification number">'+
         ' </div>'+
         '<div class="form-group">'+
-        '<label>Bank name</label>' +
-        '<input type="text" class="form-control" name="bank_name" placeholder="Bank name">' +
+        '<label>Member name</label>' +
+        '<input type="text" class="form-control" name="member_name" placeholder="Member name">' +
+        '</div>' +
+        '<div class="form-group">'+
+        '<label>Member last name</label>' +
+        '<input type="text" class="form-control" name="member_lastname" placeholder="Member last name">' +
         '</div>' +
         '<div class="form-group">' +
-        ' <label>Max months for loan</label>' +
-        '<input type="number" class="form-control" name="max_months" placeholder="Max months">' +
-        '</div>'+
-        '</div>'+
-        '<div class="form-group">' +
-        ' <label>Max credit for loan</label>' +
-        '<input type="number" class="form-control" name="max_credit" placeholder="Max credit">' +
+        ' <label>Birthday</label>' +
+        '<input type="date" class="form-control" name="birthday" placeholder="Birthday">' +
         '</div>'+
         '<div class="form-group">' +
-        ' <label>Adminitrative costs</label>' +
-        '<input type="number" class="form-control" name="administrative_costs" placeholder="Adminitrative costs">' +
+        ' <label>Sex</label>' +
+        '<input type="text" class="form-control" name="sex" placeholder="Sex">' +
         '</div>'+
         '<div class="form-group">' +
-        ' <label>Euribor</label>' +
-        '<input type="number" readonly class="form-control" name="id_euribor" placeholder="Euribor id" id="id_euribor" value="2">' +
+        ' <label>City</label>' +
+        '<input type="text" class="form-control" name="city" placeholder="City">' +
         '</div>'+
-        '<button style="float: right" type="submit" class="btn btn-success" style="float:right">Add bank</button>' +
-        '<label>ATTENTION: Euribor is set automatically to 2 since its the second quarter of 2018 </label>'+
+        '<button style="float: right" type="submit" class="btn btn-success" style="float:right">Add member</button>' +
         '</form>',
 
-        cancel: function(){
-
-        }
+        cancel: function(){}
     });
 }
 

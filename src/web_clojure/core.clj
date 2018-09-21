@@ -12,9 +12,9 @@
            (GET "/index" [] (controller/index))
            (route/resources "/")
            (GET "/homepage" [] (controller/home))
+           (route/resources "/")
+           (GET "/members" [] (controller/allMembers))
            (route/resources "/"))
-
-
 
 
 (defroutes app-routes
