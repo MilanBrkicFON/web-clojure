@@ -1,4 +1,4 @@
-(ns web-clojure.model.user
+(ns web-clojure.model.sport
   (:refer-clojure :exclude [get])
   (:require [clojure.java.jdbc :as jdbc]
             [clojure.java.jdbc.sql :as sql]))
@@ -11,10 +11,14 @@
                :zeroDateTimeBehaviour "convertToNull"
                })
 
-(defn getByUsername [username]
+(defn get [id]
   (first (jdbc/query mysql-db
-                     ["SELECT * FROM user WHERE username = ?" username])))
+                     ["SELECT * FROM sport WHERE sport_id = ?" id])))
 
-(defn getUserByPassword [password]
-  (first (jdbc/query mysql-db
-                     ["SELECT * FROM user WHERE password = ?" password])))
+(defn insertSport
+  [params]
+  (jdbc/insert! mysql-db :sport params))
+
+(defn removeSport [id]
+  (jdbc/execute! mysql-db
+                 ["DELETE FROM sport WHERE sport_id = ?" id]))

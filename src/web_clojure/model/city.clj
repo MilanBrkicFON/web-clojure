@@ -1,4 +1,4 @@
-(ns web-clojure.model.user
+(ns web-clojure.model.city
   (:refer-clojure :exclude [get])
   (:require [clojure.java.jdbc :as jdbc]
             [clojure.java.jdbc.sql :as sql]))
@@ -10,11 +10,18 @@
                :password              ""
                :zeroDateTimeBehaviour "convertToNull"
                })
+(defn getAll []
+  (jdbc/query mysql-db
+              ["SELECT * FROM city"]))
 
-(defn getByUsername [username]
+(defn get [id]
   (first (jdbc/query mysql-db
-                     ["SELECT * FROM user WHERE username = ?" username])))
+                     ["SELECT * FROM city WHERE postal_code = ?" id])))
 
-(defn getUserByPassword [password]
-  (first (jdbc/query mysql-db
-                     ["SELECT * FROM user WHERE password = ?" password])))
+(defn insertCity
+  [params]
+  (jdbc/insert! mysql-db :city params))
+
+(defn removeCity [id]
+  (jdbc/execute! mysql-db
+                 ["DELETE FROM city WHERE postal_code = ?" id]))

@@ -106,11 +106,8 @@
                   <table id="datatable-members" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                      <th>Identification number</th>
-                      <th>Member name</th>
-                      <th>Member last name</th>
-                      <th>Sex</th>
-                      <th>City</th>
+                      <th>Postal number</th>
+                      <th>city name</th>
                       <th>Update &nbsp;</th>
                       <th>Delete &nbsp;</th>
                     </tr>
@@ -118,21 +115,18 @@
 
                     <tbody>
 
-                    {{#members}}
+                    {{#cities}}
                       <tr data-row-subject-id="">
-                        <td>{{member_id}}</td>
-                        <td>{{name}}</td>
-                        <td>{{surname}}</td>
-                        <td>{{sex}}</td>
+                        <td>{{postal_code}}</td>
                         <td>{{city_name}}</td>
-                        <td><a href="/model/member/{{member_id}}"><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td><a href="/model/member/{{member_id}}/remove"><i class="fa fa-remove"></i></a></td>
+                        <td><a href="/model/city/{{postal_code}}"><i class="fa fa-pencil-square-o"></i></a></td>
+                        <td><a href="/model/city/{{city_name}}/remove"><i class="fa fa-remove"></i></a></td>
                       </tr>
-                    {{/members}}
+                    {{/cities}}
                     </tbody>
                   </table>
                 </div>
-                <p>Want to add new member? <button class="btn btn-primary" id="addMember" onclick="addNewMember()">Add new member</button> </p>
+                <p>Want to add new city? <button class="btn btn-primary" id="addMember" onclick="addNewCity()">Add new city</button> </p>
               </div>
             </div>
 

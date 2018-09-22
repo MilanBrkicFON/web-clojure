@@ -2,6 +2,7 @@
   (:require
     [clostache.parser :as clostache]
     [web-clojure.model.user :as user]
+    [web-clojure.model.city :as city]
     [web-clojure.model.member :as member]))
 
 (defn read-template [template-name]
@@ -18,5 +19,11 @@
   (render-template "index" {}))
 
 (defn allMembers []
-      (render-template "allMembers" {:members (member/getAllMembers)
-                                     :trainers (member/getAllTrainers)}))
+  (render-template "allMembers" {:members (member/getAllMembers)
+                                 :cities  (member/getCities)}))
+(defn updatingMember [member_id]
+  (render-template "updateMember" {:member (member/getMember member_id)
+                                   :cities (city/getAll)}))
+
+(defn allCities []
+  (render-template "allCities" {:cities (city/getAll)}))

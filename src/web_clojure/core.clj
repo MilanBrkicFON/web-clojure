@@ -3,7 +3,10 @@
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [ring.middleware.basic-authentication :refer :all]
-            [web-clojure.model.user :as user]
+            [ring.util.response :as resp]
+            [ring.middleware.basic-authentication :refer :all]
+            [web-clojure.model.member :as member]
+            [web-clojure.model.city :as city]
             [web-clojure.controller.controller :as controller]))
 
 (defroutes public-routes
@@ -14,7 +17,35 @@
            (GET "/homepage" [] (controller/home))
            (route/resources "/")
            (GET "/members" [] (controller/allMembers))
-           (route/resources "/"))
+           (route/resources "/")
+           (GET "/cities" [] (controller/allCities))
+           (route/resources "/")
+
+
+           (GET "/model/member/:id/remove" [id]
+             (do (member/removeMeber id)
+                 (resp/redirect "/members")))
+
+           (POST "/model/member/insert" [& params]
+             (do (member/insertMember params)
+                 (resp/redirect "/members")))
+
+           (GET "/model/member/:member_id" [member_id]
+             (controller/updatingMember member_id))
+
+           (POST "/model/member/:member_id/update" [& params]
+             (do (member/updateMember (:member_id params) params)
+                 (resp/redirect "/members")))
+
+           (GET "/model/city/:id/remove" [id]
+             (do (city/removeCity id)
+                 (resp/redirect "/members")))
+
+           (POST "/model/city/insert" [& params]
+             (do (city/insertCity params)
+                 (resp/redirect "/members"))))
+
+
 
 
 (defroutes app-routes
