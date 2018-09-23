@@ -22,6 +22,9 @@
   [params]
   (jdbc/insert! mysql-db :city params))
 
+(defn updateCity [postal_code params]
+  (jdbc/update! mysql-db :city params (sql/where {:postal_code postal_code})))
+
 (defn removeCity [id]
   (jdbc/execute! mysql-db
                  ["DELETE FROM city WHERE postal_code = ?" id]))

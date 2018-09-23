@@ -19,7 +19,6 @@
               ["SELECT * FROM city"]))
 
 (defn getMember [member_id]
-  (print "GET MEMBER : ?" member_id)
   (first (jdbc/query mysql-db
                      ["SELECT * FROM member WHERE member_id = ?" member_id])))
 

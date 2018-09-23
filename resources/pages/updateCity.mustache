@@ -42,11 +42,7 @@
         <div class="navbar nav_title" style="border: 0;">
           <a href="/homepage" class="site_title"><span>Homepage</span></a>
         </div>
-
-
         <br/>
-
-
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
           <div class="menu_section">
@@ -84,7 +80,7 @@
 
     <div class="right_col" role="main">
       <!-- top tiles -->
-      <div class="container-login100" style="background-image: url('images/fon1.png');">
+      <div class="container-login100" style="background-image: url('/images/fon1.png');">
         <div class="">
           <div class="page-title">
             <div class="title_right">
@@ -97,36 +93,22 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>Cities
-                  </h2>
+                  <h2>Members</h2>
                   <div class="clearfix"></div>
                 </div>
-                <div class="x_content">
-                  <p class="text-muted font-13 m-b-30">The table show all available cities</p>
-                  <table id="datatable-members" class="table table-striped table-bordered">
-                    <thead>
-                    <tr>
-                      <th>Postal number</th>
-                      <th>city name</th>
-                      <th>Update &nbsp;</th>
-                      <th>Delete &nbsp;</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-
-                    {{#cities}}
-                      <tr data-row-subject-id="">
-                        <td>{{postal_code}}</td>
-                        <td>{{city_name}}</td>
-                        <td><a href="/model/city/{{postal_code}}"><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td><a href="/model/city/{{city_name}}/remove"><i class="fa fa-remove"></i></a></td>
-                      </tr>
-                    {{/cities}}
-                    </tbody>
-                  </table>
-                </div>
-                <p>Want to add new city? <button class="btn btn-primary" id="addMember" onclick="addNewCity()">Add new city</button> </p>
+                <form action="/model/member/{{city.postal_code}}/update" method="post">
+                  <div class="form-group">
+                    <label for="model">Postal code</label>
+                    <input type="text" class="form-control" name="postal_code"
+                           value="{{city.postal_code}}"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="year">City name</label>
+                    <input type="text" class="form-control" name="city_name"
+                           value="{{city.city_name}}"/>
+                  </div>
+                  <button type="submit" class="btn btn-danger">Save update</button>
+                </form>
               </div>
             </div>
 

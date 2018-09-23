@@ -25,5 +25,8 @@
   (render-template "updateMember" {:member (member/getMember member_id)
                                    :cities (city/getAll)}))
 
+(defn updatingCity [postal_code]
+  (render-template "updateCity" {:city (city/get postal_code)}))
+
 (defn allCities []
   (render-template "allCities" {:cities (city/getAll)}))

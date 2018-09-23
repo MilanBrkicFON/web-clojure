@@ -39,11 +39,18 @@
 
            (GET "/model/city/:id/remove" [id]
              (do (city/removeCity id)
-                 (resp/redirect "/members")))
+                 (resp/redirect "/cities")))
 
            (POST "/model/city/insert" [& params]
              (do (city/insertCity params)
-                 (resp/redirect "/members"))))
+                 (resp/redirect "/cities")))
+
+           (GET "/model/city/:postal_code" [postal_code]
+             (controller/updatingCity postal_code))
+
+           (POST "/model/city/:postal_code/update" [& params]
+             (do (city/updateCity (:postal_code params) params)
+                 (resp/redirect "/cities"))))
 
 
 
