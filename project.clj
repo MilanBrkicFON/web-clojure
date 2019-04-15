@@ -7,6 +7,7 @@
                  [compojure "1.5.1"]
                  [org.clojure/java.jdbc "0.3.0-alpha5"]
                  [mysql/mysql-connector-java "5.1.6"]
+                 [ring/ring-json "0.4.0"]
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [ring-basic-authentication "1.0.5"]]
   :plugins [[lein-ring "0.9.7"]]

@@ -2,6 +2,7 @@
   (:use compojure.core)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
+            [ring.middleware.json :as middleware]
             [ring.middleware.basic-authentication :refer :all]
             [ring.util.response :as resp]
             [ring.middleware.basic-authentication :refer :all]
@@ -50,9 +51,11 @@
              (do (city/insertCity params)
                  (resp/redirect "/cities")))
 
-           (POST "/book" [& params]
-             (do (property/book (:property_id params) params)
-                 (resp/redirect "/properties")))
+           (POST "/book" request
+             (let [property_id (or (get-in request [:body :property_id])
+                            "John Doe")]
+               (do (property/book property_id)
+                   (resp/redirect "/properties"))))
 
            (GET "/model/city/:postal_code" [postal_code]
              (controller/updatingCity postal_code))
@@ -69,4 +72,6 @@
            (route/not-found "404 Not Found"))
 
 (def -main
-  (handler/site app-routes))
+  (-> (handler/site app-routes)
+      (middleware/wrap-json-body {:keywords? true})
+      middleware/wrap-json-response))

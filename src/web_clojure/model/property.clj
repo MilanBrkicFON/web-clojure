@@ -22,10 +22,8 @@
   (jdbc/query mysql-db
               ["SELECT * FROM property AS p INNER JOIN member ON p.owner = member.member_id INNER JOIN city ON p.city = city.postal_code WHERE p.city = ?" postal_code]))
 
-(defn book [property_id params]
-  (println params)
-  (println property_id)
-  (jdbc/query mysql-db
+(defn book [property_id]
+  (jdbc/execute! mysql-db
               ["UPDATE property SET property.booked = true WHERE property_id = ?" property_id]))
 
 (defn removeProperty [id]

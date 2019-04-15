@@ -58,14 +58,16 @@ function addNewCity() {
 function book(id) {
     $.confirm({
         title: 'Are you sure you want to send booking request?',
-        confirm: () => {
-            $.ajax('localhost:3000/book', {
+        confirm: async () => {
+            await fetch("http://localhost:3003/book", {
                 method: 'POST',
-                data: JSON.stringify({"property_id": id}),
-                contentType: "application/json; charset=utf-8",
-                success: alert( "success" ),
-                dataType: 'json'
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({property_id: id})
             });
+            window.location.reload();
         }
     })
 }
