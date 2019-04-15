@@ -7,7 +7,7 @@
                :subprotocol           "mysql"
                :subname               "//localhost:3306/clojure_app"
                :user                  "root"
-               :password              ""
+               :password              "root"
                :zeroDateTimeBehaviour "convertToNull"
                })
 (defn getAll []

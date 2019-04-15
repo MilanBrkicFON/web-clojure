@@ -54,3 +54,18 @@ function addNewCity() {
         }
     });
 }
+
+function book(id) {
+    $.confirm({
+        title: 'Are you sure you want to send booking request?',
+        confirm: () => {
+            $.ajax('localhost:3000/book', {
+                method: 'POST',
+                data: JSON.stringify({"property_id": id}),
+                contentType: "application/json; charset=utf-8",
+                success: alert( "success" ),
+                dataType: 'json'
+            });
+        }
+    })
+}

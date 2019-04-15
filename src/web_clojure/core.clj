@@ -7,6 +7,7 @@
             [ring.middleware.basic-authentication :refer :all]
             [web-clojure.model.member :as member]
             [web-clojure.model.city :as city]
+            [web-clojure.model.property :as property]
             [web-clojure.controller.controller :as controller]))
 
 (defroutes public-routes
@@ -20,6 +21,7 @@
            (route/resources "/")
            (GET "/cities" [] (controller/allCities))
            (route/resources "/")
+           (GET "/properties" [] (controller/allProperties))
 
 
            (GET "/model/member/:id/remove" [id]
@@ -33,6 +35,9 @@
            (GET "/model/member/:member_id" [member_id]
              (controller/updatingMember member_id))
 
+           (GET "/properties/search/:postal_code" [postal_code]
+             (controller/searchProperties postal_code))
+
            (POST "/model/member/:member_id/update" [& params]
              (do (member/updateMember (:member_id params) params)
                  (resp/redirect "/members")))
@@ -44,6 +49,10 @@
            (POST "/model/city/insert" [& params]
              (do (city/insertCity params)
                  (resp/redirect "/cities")))
+
+           (POST "/book" [& params]
+             (do (property/book (:property_id params) params)
+                 (resp/redirect "/properties")))
 
            (GET "/model/city/:postal_code" [postal_code]
              (controller/updatingCity postal_code))
