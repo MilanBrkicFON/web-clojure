@@ -112,11 +112,10 @@
                     <thead>
                     <tr>
                       <th scope="col">Property name</th>
-                      <th scope="col">City</th>
+                      <th scope="col">Owner</th>
                       <th scope="col">Sq metars</th>
                       <th scope="col">Num. of rooms</th>
-                      <th scope="col">Owner</th>
-                      <th scope="col">Booked</th>
+                      <th scope="col">City</th>
                       <th scope="col">Book your stay ASAP &nbsp;</th>
                     </tr>
                     </thead>
@@ -129,19 +128,15 @@
                         <td>{{name}} {{surname}}</td>
                         <td>{{sq_m}}</td>
                         <td>{{rooms}}</td>
-                        <td>{{city}}</td>
+                        <td>{{city_name}}</td>
                         <td>
                           {{#booked}}
-                            Yes
+                            <i>Reserved</i>
                           {{/booked}}
                           {{^booked}}
-                            No
+                            <a href="/model/property/{{property_id}}"><button type="button" class="btn btn-primary fa fa-pencil-square-o">Reserve</button></a>
                           {{/booked}}
-                        {{^booked}}
-                          <td>
-                            <button type="button" class="btn btn-primary fa fa-pencil-square-o" onclick="book({{property_id}})">Reserve</button>
-                          </td>
-                        {{/booked}}
+                        </td>
                       </tr>
                     {{/properties}}
                     </tbody>

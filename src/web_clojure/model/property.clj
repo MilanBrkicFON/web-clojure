@@ -23,8 +23,7 @@
               ["SELECT * FROM property AS p INNER JOIN member ON p.owner = member.member_id INNER JOIN city ON p.city = city.postal_code WHERE p.city = ?" postal_code]))
 
 (defn book [property_id]
-  (jdbc/execute! mysql-db
-              ["UPDATE property SET property.booked = true WHERE property_id = ?" property_id]))
+  (jdbc/update! mysql-db :property {:booked true} (sql/where {property_id property_id})))
 
 (defn removeProperty [id]
   (jdbc/execute! mysql-db
