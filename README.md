@@ -1,14 +1,14 @@
 # web-clojure
 
-A Clojure library designed to ... well, that part is up to you.
+The goal of this project is to make web application that is sort of booking platform. It will provide available properties in cities and searching for properties in available cities.
 
 ## Usage
+Web platform should be intuitive from the start. Go play with it! :)
 
-FIXME
+## Prerequisites
+You will need Leiningen 1.8.0 or above installed.
 
-## License
+## Running
+To start a web server for the application, run:
 
-Copyright © 2018 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+```lein ring server```
