@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.0.1 (64 bit)
-MySQL - 5.7.21 : Database - clojure_app
+MySQL - 5.7.22-log : Database - clojure_app
 *********************************************************************
 */
 
@@ -29,7 +29,6 @@ CREATE TABLE `city` (
 /*Data for the table `city` */
 
 insert  into `city`(`postal_code`,`city_name`) values 
-(1,'New York'),
 (11000,'Beograd'),
 (11070,'Novi Beograd'),
 (11080,'Zemun'),
@@ -65,28 +64,36 @@ insert  into `member`(`name`,`surname`,`birthday`,`sex`,`member_id`,`city`,`heig
 ('Milan','Brkic','1994-07-08','M',1107,11000,185,80,7.8,9),
 ('Nikoleta','Stevic','1994-05-19','Z',1108,11000,170,60,6.5,8.5),
 ('Milena','Brkic','1994-07-08','Z',1109,11070,0,0,0,0),
-('Stefan','Krstic','1993-08-25','M',1110,11070,NULL,NULL,NULL,NULL);
+('milan','Krstic','1993-08-25','M',1110,11070,NULL,NULL,NULL,NULL);
 
-/*Table structure for table `sport` */
+/*Table structure for table `property` */
 
-DROP TABLE IF EXISTS `sport`;
+DROP TABLE IF EXISTS `property`;
 
-CREATE TABLE `sport` (
-  `sport_id` int(11) NOT NULL,
-  `sport_name` varchar(20) DEFAULT NULL,
-  `max_in_team` int(11) DEFAULT NULL,
-  PRIMARY KEY (`sport_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `property` (
+  `property_id` int(11) NOT NULL AUTO_INCREMENT,
+  `property_name` varchar(150) DEFAULT NULL,
+  `sq_m` int(11) DEFAULT NULL,
+  `rooms` int(11) DEFAULT NULL,
+  `people_count` int(11) DEFAULT NULL,
+  `owner` int(11) NOT NULL,
+  `city` int(11) NOT NULL,
+  `booked` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`property_id`),
+  KEY `owner` (`owner`),
+  KEY `city` (`city`),
+  CONSTRAINT `property_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `member` (`member_id`),
+  CONSTRAINT `property_ibfk_2` FOREIGN KEY (`city`) REFERENCES `city` (`postal_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
-/*Data for the table `sport` */
+/*Data for the table `property` */
 
-insert  into `sport`(`sport_id`,`sport_name`,`max_in_team`) values 
-(1,'Kosarka',20),
-(2,'Mali fudbal',25),
-(3,'Odbojka',22),
-(4,'Rukomet',30),
-(5,'Fudbal',40),
-(6,'Stoni tenis',4);
+insert  into `property`(`property_id`,`property_name`,`sq_m`,`rooms`,`people_count`,`owner`,`city`,`booked`) values 
+(2,'Milan\'s apartment',42,2,2,1107,11000,0),
+(3,'Property 1',30,1,2,1107,11070,0),
+(4,'Property 2',90,3,6,1108,11070,0),
+(5,'Property 3',110,4,6,1109,21000,1),
+(6,'Property 4',68,3,5,1108,16000,1);
 
 /*Table structure for table `user` */
 
